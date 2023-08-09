@@ -36,7 +36,7 @@ published_at: 2023-04-27 07:00
 #### 単一変数を渡す
 
 ```apex
-public class flowToApexSample(){
+public class flowToApexSample{
     @InvocableMethod(label='flowToApexSample')
     public static List<Id> sample1(List<Id> requests){
         //単一変数のIdをrequestIdに渡す
@@ -49,7 +49,7 @@ public class flowToApexSample(){
 #### コレクション変数を渡す
 
 ```apex
-public class flowToApexSample(){
+public class flowToApexSample{
     @InvocableMethod(label='flowToApexSample')
     public static List<Id> sample1(List<List<Id>> requests){
         //コレクション変数内のIdをrequestIdsに渡す
@@ -62,9 +62,9 @@ public class flowToApexSample(){
 ### `@InvocableVariable` アノテーション用別クラスを作成する場合
 
 ```apex
-public class flowToApexSample(){
+public class flowToApexSample{
     //入力変数用のクラスを作り、変数を入れる
-    public class sampleInputInfo(){
+    public class sampleInputInfo{
         //単一変数&必須
         @InvocableVariable(required=true)
         public Id contextId;
@@ -92,7 +92,7 @@ public class flowToApexSample(){
 #### 単一変数を返す
 
 ```apex
-public class flowToApexSample(){
+public class flowToApexSample{
     @InvocableMethod(label='flowToApexSample')
     public static List<Id> sample1(List<Id> requests){
         ...
@@ -106,7 +106,7 @@ public class flowToApexSample(){
 #### コレクション変数を返す
 
 ```apex
-public class flowToApexSample(){
+public class flowToApexSample{
     @InvocableMethod(label='flowToApexSample')
     public static List<List<Id>> sample1(List<List<Id>> requests){
         ...
@@ -120,9 +120,9 @@ public class flowToApexSample(){
 ### `@InvocableVariable` アノテーション用別クラスを作成する場合
 
 ```apex
-public class flowToApexSample(){
+public class flowToApexSample{
     //出力変数用のクラスを作り、変数を入れる
-    public class sampleOutputInfo(){
+    public class sampleOutputInfo{
         //単一変数
         @InvocableVariable
         public Id contextId;
