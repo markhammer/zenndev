@@ -3,7 +3,7 @@ title: "カスタムメタデータを用いたApexのテスト方法"
 emoji: "💯"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["カスタムメタデータ", "salesforce", "apex", "testvisible"]
-published: false
+published: true
 published_at: 2023-09-24 01:00
 ---
 
