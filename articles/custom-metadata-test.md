@@ -75,8 +75,8 @@ private class SampleTest {
 
 ```apex:Sample.cls
 public class Sample {
+    private static Sample_Setting__mdt sampleMdt = Sample_Setting__mdt.getInstance('Settings');
     //@testVisible アノテーションを付与
-    private static Sample_Setting__mdt sampleMdt = SampleSettingDAO.sampleSetting;
     @testVisible private static String apiKey = sampleMdt.apiKey__c;
     @testVisible private static boolean flag = sampleMdt.flag__c;
     //以下略
