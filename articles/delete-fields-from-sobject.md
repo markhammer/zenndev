@@ -68,7 +68,7 @@ public class SObjectUtil {
             for(String fieldName : fieldsToValue.keySet()){
                 if(!removalFields.contains(fieldName)){
                     //項目名がremovalFieldsに含まれない場合のみ追加
-                	s.put(fieldName, fieldsToValue.get(fieldName));
+                    s.put(fieldName, fieldsToValue.get(fieldName));
                 }
             }
             resultList.add(s);

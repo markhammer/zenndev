@@ -56,17 +56,17 @@ public class GetPersonAccountInfo {
                                         new String[]{String.escapeSingleQuotes(fields),
                                         String.escapeSingleQuotes(accId)});
         try{
-        	List<Account> accList = Database.query(query);
-        	for(Account acc: accList){
-            	Boolean isPersonAccount = Boolean.valueOf(acc.get('IsPersonAccount'));
-            	if(isPersonAccount){
-            		System.debug('FirstName: ' + acc.get('FirstName'));
-            		System.debug('LastName: ' + acc.get('LastName'));
-            	}
-            	else{
-                	System.debug('Name: ' + acc.get('Name'));
-            	}
-        	}
+            List<Account> accList = Database.query(query);
+            for(Account acc: accList){
+                Boolean isPersonAccount = Boolean.valueOf(acc.get('IsPersonAccount'));
+                if(isPersonAccount){
+                    System.debug('FirstName: ' + acc.get('FirstName'));
+                    System.debug('LastName: ' + acc.get('LastName'));
+                }
+                else{
+                    System.debug('Name: ' + acc.get('Name'));
+                }
+            }
         }
         catch(Exception e){
             System.debug(e.getTypeName()+ ':' +e.getMessage());
@@ -86,4 +86,4 @@ GetPersonAccountInfo.getName('001aaBBBBBcccccAAA');
 実際のロジックでは[こちらのブログ](https://tyoshikawa1106.hatenablog.com/entry/2019/08/16/080827)で紹介されているように`Schema.sObjectType.Account.fields.getMap().containsKey('isPersonAccount')`等で組織として個人取引先が有効にされているか否かを判定したうえで、個人取引先が有効な組織の場合のみに`GetPersonAccountInfo.getName()`メソッドを実行する必要があります。
 
 # 参考文献
-- [Check if Person Account is enabled from APEX](https://wedgecommerce.com/check-person-account-enabled-apex/)
+- [Check if Person Account is enabled from APEX](https://wedgecommerce.com/check-person-account-enabled-apex/)- [Check if Person Account is enabled from APEX - wedgecommerce](https://wedgecommerce.com/check-person-account-enabled-apex/)
