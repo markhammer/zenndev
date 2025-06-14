@@ -39,9 +39,10 @@ published_at: 2023-04-27 07:00
 public class flowToApexSample{
     @InvocableMethod(label='flowToApexSample')
     public static List<Id> sample1(List<Id> requests){
-        //単一変数のIdをrequestIdに渡す
-        Id requestId = requests.get(0);
-        ...
+        for(Id requestId : requests){
+            //以下requestIdを使って処理を行う
+            //...
+        }
     }
 }
 ```
@@ -52,9 +53,12 @@ public class flowToApexSample{
 public class flowToApexSample{
     @InvocableMethod(label='flowToApexSample')
     public static List<Id> sample1(List<List<Id>> requests){
-        //コレクション変数内のIdをrequestIdsに渡す
-        List<Id> requestIds = requests.get(0);
-        ...
+        for(List<Id> request : requests){
+            for(Id requestId : request){
+                //以下requestIdを使って処理を行う
+                //...
+            }
+        }
     }
 }
 ```
@@ -75,10 +79,13 @@ public class flowToApexSample{
     }
 
     @InvocableMethod(label='flowToApexSample')
-    public static List<Id> sample1(List<sampleInputInfo> infos){
-        Id contextId = infos.get(0).contextId;
-        List<Id> selectedIds = infos.get(0).selectedIds;
-        ...
+    public static List<Id> sample1(List<sampleInputInfo> inputInfos){
+        for(sampleInputInfo inputInfo : inputInfos){
+            Id contextId = inputInfo.contextId;
+            List<Id> selectedIds = inputInfo.selectedIds;
+            //以下contextIdとselectedIdsを使って処理を行う
+            //...
+        }
     }
 }
 ```
@@ -95,10 +102,13 @@ public class flowToApexSample{
 public class flowToApexSample{
     @InvocableMethod(label='flowToApexSample')
     public static List<Id> sample1(List<Id> requests){
-        ...
-        List<Id> returnId = new List<Id>();
-        returnId.add(/*ここに返したいId変数を指定*/);
-        return returnId;
+        List<Id> returnIdList = new List<Id>();
+        for(Id requestId : requests){
+            //以下requestIdを使って処理を行う
+            //...
+            returnIdList.add(/*ここに返したいId変数を指定*/);
+        }
+        return returnIdList;
     }
 }
 ```
@@ -109,10 +119,17 @@ public class flowToApexSample{
 public class flowToApexSample{
     @InvocableMethod(label='flowToApexSample')
     public static List<List<Id>> sample1(List<List<Id>> requests){
-        ...
-        List<List<Id>> returnIds = new List<List<Id>>();
-        returnIds.add(/*ここに返したいList<Id>型の変数を指定*/);
-        return returnIds;
+        List<List<Id>> returnIdLists = new List<List<Id>>();
+        for(List<Id> request : requests){
+            List<Id> returnIdList = new List<Id>();
+            for(Id requestId : request){
+                //以下requestIdを使って処理を行う
+                //...
+                returnIdList.add(/*ここに返したいId変数を指定*/);
+            }
+            returnIdLists.add(returnIdList);
+        }
+        return returnIdLists;
     }
 }
 ```
@@ -134,14 +151,17 @@ public class flowToApexSample{
 
     @InvocableMethod(label='flowToApexSample')
     public static List<sampleOutputInfo> sample1(List<Id> requests){
-        ...
-        //sampleIdはId型、sampleIdsはList<Id>型の変数
-        sampleOutputInfo returnInfo = new sampleOutputInfo();
-        returnInfo.contextId = sampleId;
-        returnInfo.selectedIds = sampleIds;
-
         List<sampleOutputInfo> returnInfos = new List<sampleOutputInfo>();
-        returnInfos.add(returnInfo);
+        for(Id requestId : requests){
+            //以下requestIdを使って処理を行う
+            //...
+            
+            sampleOutputInfo returnInfo = new sampleOutputInfo();
+            //sampleIdはId型、sampleIdsはList<Id>型の変数
+            returnInfo.contextId = sampleId;
+            returnInfo.selectedIds = sampleIds;
+            returnInfos.add(returnInfo);
+        }
         return returnInfos;
     }
 }
